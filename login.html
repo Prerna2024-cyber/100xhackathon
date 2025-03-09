@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - 100xHackathon</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <p>Select your role:</p>
+        <div class="role-buttons">
+            <button id="user-btn" class="btn btn-primary">Login as User</button>
+            <button id="admin-btn" class="btn btn-warning">Login as Admin</button>
+        </div>
+
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span id="togglePassword" class="toggle-password">👁️</span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let role = localStorage.getItem("userRole") || "user"; // Default role
+
+            // Role Selection for Login
+            document.getElementById("user-btn").addEventListener("click", function () {
+                role = "user";
+                localStorage.setItem("userRole", "user");
+                alert("User Login Selected");
+            });
+
+            document.getElementById("admin-btn").addEventListener("click", function () {
+                role = "admin";
+                localStorage.setItem("userRole", "admin");
+                alert("Admin Login Selected");
+            });
+
+            // Login Form Submission
+            document.getElementById("login-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const storedRole = localStorage.getItem("userRole") || "user";
+
+                const endpoint = storedRole === "admin"
+                    ? "http://localhost:3000/api/v1/admin/signin"
+                    : "http://localhost:3000/api/v1/user/signin";
+
+                fetch(endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Login API Response:", data);
+
+                    if (data.error) {
+                        alert("Login failed: " + data.error);
+                    } else {
+                        alert("Login successful!");
+                        localStorage.setItem("authToken", data.token);
+                        window.location.href = storedRole === "admin" ? "admin.html" : "user.html";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Server error, please try again.");
+                });
+            });
+
+            // Toggle Password Visibility
+            document.getElementById("togglePassword").addEventListener("click", function () {
+                const passwordInput = document.getElementById("password");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                } else {
+                    passwordInput.type = "password";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
