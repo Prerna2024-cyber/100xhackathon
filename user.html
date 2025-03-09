@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="user.js"></script>
+</head>
+<body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const token = localStorage.getItem("authToken");
+            const role = localStorage.getItem("userRole");
+
+            if (!token || role !== "user") {
+                alert("Unauthorized! Redirecting to login...");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+    <!-- Navigation -->
+    <header>
+        <h1>User Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#hackathons">Available Hackathons</a></li>
+                <li><a href="#submission">Submit Project</a></li>
+                <li><button id="logout-btn" class="btn btn-danger">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hackathon List -->
+    <section id="hackathons" class="section">
+        <h2>Available Hackathons</h2>
+        <div id="hackathon-list" class="hackathon-container">Loading...</div>
+    </section>
+
+    <!-- Submission Form -->
+    <section id="submission" class="section">
+        <h2>Submit Your Project</h2>
+        <form id="submission-form">
+            <select id="hackathonId" required>
+                <option value="">Select Hackathon</option>
+            </select>
+            <input type="text" id="submissionLink" placeholder="Project Submission Link (GitHub, Drive, etc.)" required>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 100xHackathon. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
