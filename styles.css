@@ -275,7 +275,7 @@ button {
     margin: 10px 0;
 }
 
-/* User Dashboard */
+/* User Dashboard from this to */
 .hackathon-container {
     display: flex;
     flex-wrap: wrap;
@@ -295,7 +295,7 @@ button {
 .hackathon-item h3 {
     margin: 10px 0;
 }
-
+/*till this*/
 /* Submission Form */
 #submission-form {
     width: 50%;
