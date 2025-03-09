@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="admin.js"></script>
+</head>
+<body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const token = localStorage.getItem("authToken");
+            const role = localStorage.getItem("userRole");
+
+            if (!token || role !== "admin") {
+                alert("Unauthorized! Redirecting to login...");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+    <!-- Navigation -->
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#manage-hackathons">Manage Hackathons</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><button id="logout-btn" class="btn btn-danger">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Admin Panel -->
+    <section id="admin-panel" class="section">
+        <h2>Manage Hackathons</h2>
+
+        <!-- Create New Hackathon -->
+        <div class="form-container">
+            <h3>Create a New Hackathon</h3>
+            <form id="create-hackathon-form">
+                <input type="text" id="title" placeholder="Hackathon Title" required>
+                <textarea id="description" placeholder="Hackathon Description" required></textarea>
+                <input type="number" id="prize" placeholder="Prize Amount ($)" required>
+                <label for="date_of_start">Start Date:</label>
+                <input type="date" id="date_of_start" required>
+                <label for="date_of_submission">Submission Deadline:</label>
+                <input type="date" id="date_of_submission" required>
+                <button type="submit" class="btn btn-success">Create Hackathon</button>
+            </form>
+        </div>
+
+        <!-- Hackathon List -->
+        <h3>Existing Hackathons</h3>
+        <div id="hackathon-list" class="hackathon-container">Loading...</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 100xHackathon. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
