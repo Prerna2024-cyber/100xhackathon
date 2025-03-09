@@ -1,11 +1,17 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    padding-top: 80px; /* Keep only if needed */
+    background-color: #7ab2e0;
     margin: 0;
-    padding: 0;
-    background: #f9f9f9;
-    color: #333;
-    scroll-behavior: smooth;
+    text-align: center;
+}
+
+/* Make sure the text is readable */
+.floating-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(19, 154, 188); /* Change if needed */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Navigation */
@@ -14,7 +20,7 @@ header {
     justify-content: space-between;
     padding: 15px 5%;
     background: #1a1a2e;
-    color: white;
+    color: #91b7ca;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -36,18 +42,23 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #83b6ca;
     text-decoration: none;
     font-weight: bold;
 }
 
 /* Hero Section */
 .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #007bff, #00c9ff);
-    padding: 100px 20px;
-    color: white;
+    background: url('your-image.png') no-repeat center center/cover;
+    color: rgb(11, 5, 5);
 }
+
 
 .hero h2 {
     font-size: 2.5rem;
@@ -68,7 +79,7 @@ nav ul li a {
 }
 
 .feature-card {
-    background: white;
+    background: rgb(113, 209, 234);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -126,7 +137,7 @@ footer {
 /* Primary Buttons (Blue - Login) */
 .btn-primary {
     background: #007bff;
-    color: white;
+    color: rgb(12, 11, 11);
 }
 
 .btn-primary:hover {
@@ -136,7 +147,7 @@ footer {
 /* Success Buttons (Green - Register) */
 .btn-success {
     background: #28a745;
-    color: white;
+    color: #130f0f;
 }
 
 .btn-success:hover {
@@ -146,7 +157,7 @@ footer {
 /* Warning Buttons (Orange - General Buttons) */
 .btn-warning {
     background: #ff5733;
-    color: white;
+    color: rgb(16, 15, 15);
 }
 
 .btn-warning:hover {
@@ -158,7 +169,7 @@ input {
     width: 90%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #0f0e0e;
     border-radius: 5px;
 }
 
@@ -172,7 +183,7 @@ form button {
     width: 350px;
     margin: 50px auto;
     padding: 20px;
-    background: #ffffff;
+    background: #c1dff0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -188,7 +199,7 @@ form button {
     width: 50%;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
+    background: #130c0c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -197,7 +208,7 @@ input, textarea {
     width: 90%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #0b0a0a;
     border-radius: 5px;
 }
 
@@ -306,4 +317,60 @@ button {
 #submission-form button {
     width: 100%;
 }
+/* adding changes*/
+.floating-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    animation: floatText 3s ease-in-out infinite;
+}
 
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+/*making text in color*/
+
+@keyframes rainbow {
+    0% { color: #ff5733; }
+    25% { color: #ffcc00; }
+    50% { color: #33ff57; }
+    75% { color: #3399ff; }
+    100% { color: #ff5733; }
+}
+
+h1 {
+    animation: rainbow 3s infinite;
+}
+
+.floating-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(90deg, #3333ff);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.about-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Adds space between images */
+    flex-wrap: wrap; /* Ensures images wrap on small screens */
+    margin-top: 20px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+ 
