@@ -180,3 +180,20 @@ function fetchLeaderboard() {
             leaderboardList.innerHTML = "<p>Error loading leaderboard.</p>";
         });
 }
+
+// //adding changes
+// document.addEventListener("DOMContentLoaded", function () {
+//     const text = document.querySelector(".floating-text");
+
+//     function revealText() {
+//         const position = text.getBoundingClientRect().top;
+//         const screenHeight = window.innerHeight;
+
+//         if (position < screenHeight - 50) {
+//             text.classList.add("animated");
+//         }
+//     }
+
+//     window.addEventListener("scroll", revealText);
+//     revealText();
+// });
